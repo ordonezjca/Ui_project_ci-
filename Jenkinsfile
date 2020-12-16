@@ -51,4 +51,15 @@ node {
             } 
                 echo "Trying to Push Docker Build to DockerHub"
     }
+stage ('Deploy to Dev') {
+
+def dockerRun = 'docker run -d -p 3030:3030 — name Movie-UI jeffkiller/ui_project_ci:latest'
+
+sshagent(['deploy-to-dev-docker']) {
+
+sh "ssh -o StrictHostKeyChecking=no admin@18.205.104.158 ${dockerRun}"
+
+}
+
+}
 }
