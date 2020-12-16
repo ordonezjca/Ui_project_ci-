@@ -53,7 +53,7 @@ node {
     }
 stage ('Deploy to Dev') {
 
-def dockerRun = 'docker run -d -p 3030:3030 — name Movie-UI jeffkiller/ui_project_ci:latest'
+def dockerRun = 'sudo docker run -p 3030:3030 --name Movie-UI -d jeffkiller/ui_project_ci:latest'
 
 sshagent(['deploy-to-dev-docker']) {
 
